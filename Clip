@@ -1,0 +1,13 @@
+create table manzanas_zmvm as(   --Tabla que se crea a partir del clip
+select merge_manzanas.*   -- Tabla sobre la que se hará el clip
+from merge_manzanas -- Tabla sobre la que se hara el clip
+inner join limite_metropolitano on -- Tipo de clip que se hace y capa con la que se hará el corte
+st_intersects(limite_metropolitano.geom,merge_manzanas.geom)); --Proceso a ejecutar, columna que tiene los datos de la geometria de la tabla del corte y columna de la tabla que tiene los datos espaciales sobre la que se hará el corte
+
+
+create table manzanas_zmvm as(
+select merge_manzanas.*
+from merge_manzanas
+inner join limite_metropolitano on
+st_intersects(limite_metropolitano.geom,merge_manzanas.geom));
+
