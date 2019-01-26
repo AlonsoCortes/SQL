@@ -1,0 +1,10 @@
+ ALTER TABLE estaciones_metro -- Nombre de la tabla a el proceso
+   ALTER COLUMN geom -- Columna donde viene el tipo de geometría 
+   TYPE Geometry(MultiPoint, 32614) -- Tipo de Geometria de la tabla y sistema de coordenadas al que se desea proyectar
+   USING ST_Transform(geom, 32614); -- Proceso al que se sometera la tabla y sistema de coordenadas a proyectar
+   
+   
+ ALTER TABLE estaciones_metro
+   ALTER COLUMN geom
+   TYPE Geometry(MultiPoint, 32614)
+   USING ST_Transform(geom, 32614);
