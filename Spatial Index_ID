@@ -1,0 +1,14 @@
+create index manzanas_zmvm_gix on manzanas_zmvm using GIST(geom);
+
+
+select count(*) from manzanas_zmvm  group by id order by count(*) desc;
+
+
+
+CREATE SEQUENCE "manzanas_zmvm_id_seq";
+update manzanas_zmvm set id = nextval('"manzanas_zmvm_id_seq"');
+
+
+ALTER TABLE manzanas_zmvm ALTER COLUMN "id" SET NOT NULL;
+ALTER TABLE manzanas_zmvm ADD UNIQUE ("id");
+ALTER TABLE manzanas_zmvm ADD PRIMARY KEY ("id");
