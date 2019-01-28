@@ -1,0 +1,14 @@
+--realiza un join entre capas que coinciden espacialmente,
+
+
+select  manzanas_zmvm.id, manzanas_zmvm.cvegeo, colonias.id_colonia,manzanas_zmvm.geom --columnas que formaran parte de la nueva capa
+into manzanas_colonias --Nueva capa a crear
+from manzanas_zmvm --Capa base a la que se le realizara el join
+join colonias --Capa de la que se extraera la información
+on st_intersects(colonias.geom, manzanas_zmvm.geom); --Relación espacial
+
+select  manzanas_zmvm.id, manzanas_zmvm.cvegeo, colonias.id_colonia,manzanas_zmvm.geom
+into manzanas_colonias
+from manzanas_zmvm 
+join colonias 
+on st_intersects(colonias.geom, manzanas_zmvm.geom);
