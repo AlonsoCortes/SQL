@@ -1,14 +1,15 @@
+--Crea el índice espacial de la capa objetivo
 create index manzanas_zmvm_gix on manzanas_zmvm using GIST(geom);
 
-
+--Se hace un conteo en la columna objetivo, para saber si existen entidades en las que se repita el valor de la columna objetivo
 select count(*) from manzanas_zmvm  group by id order by count(*) desc;
 
-
-
+--Se crea una secuncia de valores en la columna objetivo, para así tener valores únicos
 CREATE SEQUENCE "manzanas_zmvm_id_seq";
 update manzanas_zmvm set id = nextval('"manzanas_zmvm_id_seq"');
 
 
+--Se establece a la columna objetivo como columna de llave primaria
 ALTER TABLE manzanas_zmvm ALTER COLUMN "id" SET NOT NULL;
 ALTER TABLE manzanas_zmvm ADD UNIQUE ("id");
 ALTER TABLE manzanas_zmvm ADD PRIMARY KEY ("id");
