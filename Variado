@@ -1,0 +1,12 @@
+--crea un archivo apartir de la unión de dos tablas, al cual se le hace un clip con un tercer archivo
+
+create table ageb_zmvm as 
+select foo.* from 
+(select * from ageb_cdmx 
+union 
+select * from ageb_edomx)  as foo
+ join limite_metropolitano a on
+st_intersects(a.geom, foo.geom) ;
+
+--
+
