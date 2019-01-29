@@ -1,0 +1,4 @@
+create table ageb_merge as (
+select * from ageb_cdmx
+union
+select * from ageb_edomx);
