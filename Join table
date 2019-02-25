@@ -1,0 +1,13 @@
+
+
+create table XXXXX_2 as
+select columnas_1, Columnas_2
+from Tabla_1 
+inner join Tabla_2 
+on Columna_join_1 = Columna_join_2;
+
+create table ac_2016 as         --Tabla a crear
+select ac.geom, censo_2016.*    --Columnas que se pasaran a la nueva tabla
+from ac                         --Tabla a la que se le hace la unión
+inner join censo_2016           --Tipo de join que se hace
+on ac.clave = censo_2016.clave; --Columnas con que se hace el join
